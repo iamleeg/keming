@@ -10,6 +10,9 @@
 
 @interface BNRViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
 @end
 
 @implementation BNRViewController
@@ -18,12 +21,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self setKemingValue:self.slider];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)setKemingValue:(UISlider *)sender
+{
+    float keming = [sender value];
+    self.label.attributedText = [[NSAttributedString alloc] initWithString:@"Keming" attributes:@{NSKernAttributeName: @(keming)}];
 }
 
 @end
